@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"
+            integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"
+            integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4"
+            crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/NonProfitStyles.css">
+    <title>Sample Non-Profit Website</title>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+// ajax method in jQuery to asynchrounously load in JSON file
+            $.ajax({
+                type: 'GET',
+                url: 'data.json',
+                dataType: 'json',
+                success: jsonParser,
+
+            });
+        });
+
+        //gets called when if JSON file was loaded successfully
+        function jsonParser() {
+
+            //data is what we are going to be working with
+            $.getJSON('data.json', function (data) {
+                //arguments point to points in JSON file to loop through which are the picture objects. k is for keys. v is for values
+                $.each(data.pictures.picture, function (k, v) {
+                    var name = v.name;
+                    var img = v.image;
+                    var price = v.price;
+                    var desc = v.desc;
+                    $('#interiors').append('<div><img src="img/' + img + '" width="300" height="225" alt="' + name + '" /><br/><div class="title">' + name + '<br/>$' + price + '<br/>' + desc + ' <hr></div></div>')
+                });
+            });
+        }
+    </script>
+
+</head>
+<body>
+<!-- Navigation -->
+<nav id="navBar" class="navbar navbar-toggleable-md navbar-inverse">
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+            data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false"
+            aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand text-center mx-auto" href="#">Kajeepan Srikanthan</a>
+
+    <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+        <ul class="navbar-nav mx-auto">
+            <li class="nav-item active text-center">
+                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item text-center">
+                <a class="nav-link" href="#OurMission">Mission</a>
+            </li>
+            <li class="nav-item text-center">
+                <a class="nav-link" href="#FinancialInfo">Fundraising</a>
+            </li>
+        </ul>
+        <form class="form-inline my-2 my-md-0">
+            <input class="form-control mr-sm-2" type="text" placeholder="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+    </div>
+</nav>
+
+
+<div id="forestBanner" class="jumbotron">
+
+</div>
+
+<div id="OurMission" class="jumbotron">
+    <div class="container">
+        <div class="display-2 mb-4 text-center">Our Mission</div>
+        <img id="img_circle" src="img/small_plant.jpg" class="rounded-circle mx-auto d-block mb-4">
+        <p class="lead">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras gravida et erat eu sollicitudin. Duis orci
+            magna, semper eu lectus eget,
+            tempus pharetra risus. Nullam hendrerit iaculis feugiat. Nunc ligula tortor, fringilla at scelerisque nec,
+            blandit id ligula. Integer
+            eu arcu finibus, accumsan ligula sed, pharetra ligula. Vestibulum ante ipsum primis in faucibus orci luctus
+            et ultrices posuere cubilia Curae;
+            Fusce luctus malesuada mi, sit amet pretium enim cursus id. In posuere in ipsum sed sodales. Etiam hendrerit
+            libero et dolor porta ornare.
+        </p>
+
+
+        <div class="alert alert-info">
+            <h4 class="alert-heading">Our Commitment to You</h4>
+            <p class="mb-2">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean turpis turpis, rutrum non lorem ut,
+                convallis pharetra diam. Integer tincidunt.
+            </p>
+            <a class="alert-link" href="#">More Info</a>
+        </div>
+    </div>
+
+</div>
+
+<!--Pictures -->
+<div id="CardDeckInterior" class="jumbotron">
+    <div class="display-4 mt-2 mb-4 text-center">Pictures for Sale</div>
+
+
+    <div class="text-center">
+
+        <div id="interiors">
+
+        </div>
+
+
+    </div>
+
+
+</div>
+
+<!-- Fundraising Jumbotron -->
+<div id="Fundraising" class="jumbotron container-fluid">
+    <div class="container-fluid">
+        <div class="display-4 mt-2 mb-4 text-center">Fundraising</div>
+        <p class="lead">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras gravida et erat eu sollicitudin. Duis orci
+            magna, semper eu lectus eget,
+            tempus pharetra risus. Nullam hendrerit iaculis feugiat. Nunc ligula tortor, fringilla at scelerisque nec,
+            blandit id ligula. Integer
+            eu arcu finibus, accumsan ligula sed, pharetra ligula. Vestibulum ante ipsum primis in faucibus orci luctus
+            et ultrices posuere cubilia Curae;
+            Fusce luctus malesuada mi, sit amet pretium enim cursus id. In posuere in ipsum sed sodales. Etiam hendrerit
+            libero et dolor porta ornare.
+        </p>
+
+
+        <h6>2014</h6>
+        <div class="progress mb-3">
+            <div class="progress-bar progress-bar-striped bg-info" role="progressbar" style="width: 30%"
+                 aria-valuenow="30" aria-valuemin="0" aria-valuemax="100">$30,000
+            </div>
+        </div>
+
+        <h6>2015</h6>
+        <div class="progress mb-3">
+            <div class="progress-bar progress-bar-striped bg-info" role="progressbar" style="width: 40%"
+                 aria-valuenow="40" aria-valuemin="0" aria-valuemax="100">$40,000
+            </div>
+        </div>
+
+        <h6>2016</h6>
+        <div class="progress mb-3">
+            <div class="progress-bar progress-bar-striped bg-info" role="progressbar" style="width: 50%"
+                 aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">$50,000
+            </div>
+        </div>
+
+        <h6>2017 so far:</h6>
+        <div class="progress mb-4">
+            <div class="progress-bar progress-bar-striped bg-success" role="progressbar" style="width: 50%"
+                 aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">$50,000
+            </div>
+        </div>
+
+        <div class="text-center">
+            <button type="button" href="#" class="btn btn-success mb-4">Donate Now!</button>
+        </div>
+
+    </div>
+
+</div>
+
+<!--Financial Information -->
+
+<div id="FinancialInfo" class="jumbotron container-fluid">
+    <div class="container-fluid">
+        <div class="display-4 mt-2 mb-4 text-center">Financial Information</div>
+
+        <h2 class="mt-4">Services</h2>
+        <p class="lead">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis et justo rutrum, malesuada enim non,
+            vestibulum ligula. Aenean id arcu magna. Morbi ut finibus elit. Aliquam posuere auctor odio id.
+        </p>
+
+        <table class="table table-responsive table-sm">
+            <thead class="bg-success">
+            <tr>
+                <th scope="col">Item #</th>
+                <th scope="col">Service</th>
+                <th scope="col">Price (ea.)</th>
+                <th scope="col">Retail Price (Case)</th>
+                <th scope="col">Case Discount</th>
+                <th scope="col">Wholesale Price</th>
+                <th scope="col">Wholesale Discount</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <th scope="row">100050</th>
+                <td>Lorem</td>
+                <td>$9.55</td>
+                <td>$108.87</td>
+                <td>$5.73</td>
+                <td>$103.14</td>
+                <td>$11.46</td>
+            </tr>
+            <tr>
+                <th scope="row">100043</th>
+                <td>ipsum</td>
+                <td>$100.00</td>
+                <td>$1,140.00</td>
+                <td>$60.00</td>
+                <td>$1,080.00</td>
+                <td>$120.00</td>
+            </tr>
+            <tr>
+                <th scope="row">100013</th>
+                <td>dolor</td>
+                <td>$9.49</td>
+                <td>$108.19</td>
+                <td>$5.69</td>
+                <td>$102.49</td>
+                <td>$11.39</td>
+            </tr>
+            <tr>
+                <th scope="row">100041</th>
+                <td>sit</td>
+                <td>$6.00</td>
+                <td>$68.40</td>
+                <td>$3.60</td>
+                <td>$64.80</td>
+                <td>$7.20</td>
+            </tr>
+            <tr>
+                <th scope="row">100051</th>
+                <td>amet</td>
+                <td>$55.00</td>
+                <td>$627.00</td>
+                <td>$33.00</td>
+                <td>$594.00</td>
+                <td>$66.00</td>
+            </tr>
+            <tr>
+                <th scope="row">100046</th>
+                <td>consectetur</td>
+                <td>$65.00</td>
+                <td>$741.00</td>
+                <td>$39.00</td>
+                <td>$702.00</td>
+                <td>$78.00</td>
+            </tr>
+            <tr>
+                <th scope="row">100044</th>
+                <td>adipiscing</td>
+                <td>$6.44</td>
+                <td>$73.42</td>
+                <td>$3.86</td>
+                <td>$69.55</td>
+                <td>$7.73</td>
+            </tr>
+            <tr>
+                <th scope="row">100030</th>
+                <td>elit</td>
+                <td>$9.56</td>
+                <td>$108.98</td>
+                <td>$5.74</td>
+                <td>$103.25</td>
+                <td>$11.47</td>
+            </tr>
+            <tr>
+                <th scope="row">100045</th>
+                <td>Sed</td>
+                <td>$7.75</td>
+                <td>$88.35</td>
+                <td>$4.65</td>
+                <td>$83.70</td>
+                <td>$9.30</td>
+            </tr>
+            <tr>
+                <th scope="row">100053</th>
+                <td>laoreet</td>
+                <td>$9.12</td>
+                <td>$103.97</td>
+                <td>$5.47</td>
+                <td>$98.50</td>
+                <td>$10.94</td>
+            </tr>
+            <tr>
+                <th scope="row">100040</th>
+                <td>Praesent</td>
+                <td>$8.14</td>
+                <td>$92.80</td>
+                <td>$4.88</td>
+                <td>$87.91</td>
+                <td>$9.77</td>
+            </tr>
+            <tr>
+                <th scope="row">100005</th>
+                <td>tincidunt</td>
+                <td>$8.73</td>
+                <td>$99.52</td>
+                <td>$5.24</td>
+                <td>$94.28</td>
+                <td>$10.48</td>
+            </tr>
+            <tr>
+                <th scope="row">100039</th>
+                <td>sapien</td>
+                <td>$15.00</td>
+                <td>$171.00</td>
+                <td>$9.00</td>
+                <td>$162.00</td>
+                <td>$18.00</td>
+            </tr>
+            <tr>
+                <th scope="row">100054</th>
+                <td>pretium</td>
+                <td>$75.00</td>
+                <td>$855.00</td>
+                <td>$45.00</td>
+                <td>$810.00</td>
+                <td>$90.00</td>
+            </tr>
+            <tr>
+                <th scope="row">100059</th>
+                <td>quis</td>
+                <td>$7.89</td>
+                <td>$89.95</td>
+                <td>$4.73</td>
+                <td>$85.21</td>
+                <td>$9.47</td>
+            </tr>
+            <tr>
+                <th scope="row">100042</th>
+                <td>feugiat</td>
+                <td>$8.89</td>
+                <td>$101.35</td>
+                <td>$5.33</td>
+                <td>$96.01</td>
+                <td>$10.67</td>
+            </tr>
+            <tr>
+                <th scope="row">100009</th>
+                <td>efficitur</td>
+                <td>$18.00</td>
+                <td>$205.20</td>
+                <td>$10.80</td>
+                <td>$194.40</td>
+                <td>$21.60</td>
+            </tr>
+            <tr>
+                <th scope="row">100055</th>
+                <td>natoque</td>
+                <td>$9.66</td>
+                <td>$110.12</td>
+                <td>$5.80</td>
+                <td>$104.33</td>
+                <td>$11.59</td>
+            </tr>
+            <tr>
+                <th scope="row">100032</th>
+                <td>penatibus</td>
+                <td>$6.55</td>
+                <td>$74.67</td>
+                <td>$3.93</td>
+                <td>$70.74</td>
+                <td>$7.86</td>
+            </tr>
+            <tr>
+                <th scope="row">100021</th>
+                <td>magnis</td>
+                <td>$5.53</td>
+                <td>$63.04</td>
+                <td>$3.32</td>
+                <td>$59.72</td>
+                <td>$6.64</td>
+            </tr>
+            <tr>
+                <th scope="row">100047</th>
+                <td>nascetur</td>
+                <td>$5.87</td>
+                <td>$66.92</td>
+                <td>$3.52</td>
+                <td>$63.40</td>
+                <td>$7.04</td>
+            </tr>
+            </tbody>
+        </table>
+
+
+    </div><!-- content container -->
+</div>
+
+
+</body>
+</html>
