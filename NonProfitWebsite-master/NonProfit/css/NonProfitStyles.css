@@ -1,0 +1,32 @@
+#navBar{
+    background-color: darkgreen;
+}
+
+#img_circle{
+    width: 40%;
+}
+
+#forestBanner{
+    background-image: url(../img/tree_banner.jpeg);
+    background-size: cover;
+    height: 100%;
+
+
+}
+
+.jumbotron{
+    padding:0px 3px;
+
+    min-height: 300px;
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+#OurMission{
+    background-color: white;
+}
+
+#FinancialInfo{
+    background-color: white;
+}
